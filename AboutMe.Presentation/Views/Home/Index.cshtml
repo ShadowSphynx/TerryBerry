@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="mainDiv">
+    <div class="data-text">
+        <span>Name: </span>
+        <div id="Name"></div>
+    </div>
+    <div class="data-text">
+        <span>Age: </span>
+        <div id="Age"></div>
+    </div>
+    <div class="data-text">
+        <span>Description: </span>
+        <div id="Description"></div>
+    </div>
+</div>
+
+<script>
+    $.ajax({
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        url: "Home/GetAboutMeData",
+        data: "{}",
+        dataType: "JSON",
+        async: true,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+
+    $(".mainDiv .data-text #Age").html("25");
+</script>
